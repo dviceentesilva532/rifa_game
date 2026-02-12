@@ -4,6 +4,6 @@ from Qtabela import Tabela
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    table = Tabela(2, 200)
+    table = Tabela()
     table.show()
     app.exec()
