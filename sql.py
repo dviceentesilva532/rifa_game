@@ -7,7 +7,6 @@ FILE = "sql/sqlite.sql"
 JUNCAO = CAMINHO/FILE
 TABLE = "rifa_pessoas"
 
-
 con = sql.connect(JUNCAO)
 curso = con.cursor()
 
@@ -31,16 +30,45 @@ for um in range(1, 200+1):
 
 
 #LISTANDO DADOS
-def fecthall():
-    curso.execute(F"SELECT rifa FROM {TABLE} ")
-
-    lin = []
-    for li in curso.fetchall():
-        lin.append(*li)
-    con.commit()
-    return lin
-print(*fecthall())
 
 #FECHANDO AS LIGAÇÃO
 curso.close()
 con.close()
+
+
+def fecthall():
+    connecao = sql.connect(JUNCAO)
+    curs = connecao.cursor()
+
+
+    curs.execute(F"SELECT rifa, name FROM {TABLE} ")
+    lin = []
+    lista = []
+    for li in curs.fetchall():
+        lin.append(li)
+        lista.append(*lin.copy())
+        lin.clear()
+
+
+    connecao.commit()
+    
+    curs.close()
+    connecao.close()
+
+    return lista
+
+# print(*fecthall())
+
+def inserindo_valores(num:int, text:str):
+    con = sql.connect(JUNCAO)
+    cur = con.cursor()
+
+    sq = f"""UPDATE {TABLE} SET 
+                    name = '{text}'
+                    WHERE rifa = {num} """
+
+    cur.execute(sq)
+    con.commit()
+
+    cur.close()
+    con.close()
