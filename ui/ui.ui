@@ -72,25 +72,6 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>300</width>
-     <height>33</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menupagos">
-    <property name="title">
-     <string>rifas</string>
-    </property>
-    <addaction name="actionpagos"/>
-    <addaction name="actiondeveno"/>
-    <addaction name="actionlivre"/>
-   </widget>
-   <addaction name="menupagos"/>
-  </widget>
   <action name="actionpagos">
    <property name="text">
     <string>pagos</string>

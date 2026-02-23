@@ -18,16 +18,26 @@ class Main(QMainWindow, main):
         self.setupUi(self)
         self.tabela = Tabela()
         
+        # VARIAVEIS
+        self.lista = fecthall()
+
         # funcoes criada
         self.twohundred()
         self.viewtable.triggered.connect(self.mostrarTable)
-        self.pushButton.clicked.connect(self.salva)
+        self.botaosalva.clicked.connect(self.salva)
 
     def salva(self):
-        self.lineEdit.clear()
-        item = self.comboBox.currentIndex()
-        self.comboBox.removeItem(item)
-        self.comboBox.setCurrentIndex(0)
+        name = self.cliente.text()
+        item = self.rifa.currentIndex()
+        rifa = self.rifa.itemText(item)
+        
+        if name is not None:
+            if item != 0:
+                inserindo_valores(int(rifa), name)
+                self.rifa.removeItem(item)
+        self.rifa.setCurrentIndex(0)
+        self.cliente.clear()
+        self.tabela.inserindo(name, item)
         
         
 
@@ -35,9 +45,10 @@ class Main(QMainWindow, main):
         self.tabela.show()
     
     def twohundred(self):
-        self.comboBox.addItem(f'')
-        for i in range(1, 201):
-            self.comboBox.addItem(f'{i}')
+        self.rifa.addItem(f'')
+        for i, (un, ni) in enumerate(self.lista):
+            if ni is None:
+                self.rifa.addItem(f'{un}')
 
 
 class Tabela(QMainWindow,ui):
@@ -58,6 +69,11 @@ class Tabela(QMainWindow,ui):
 
         self.box.addWidget(self.table)
         self.setLayout(self.box)
+
+    def inserindo(self, nam:str, index:int):
+        nome = QTableWidgetItem(nam)
+        self.table.setItem(index, 1, nome)
+
 
     def _item(self):
         for i, (num, code) in enumerate(self.rifas):

@@ -50,7 +50,7 @@
       <x>0</x>
       <y>0</y>
       <width>241</width>
-      <height>111</height>
+      <height>123</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -58,7 +58,7 @@
       <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
      </property>
      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="rifa">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -83,7 +83,7 @@
       </widget>
      </item>
      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="cliente">
        <property name="maximumSize">
         <size>
          <width>100</width>
@@ -96,7 +96,7 @@
       </widget>
      </item>
      <item alignment="Qt::AlignmentFlag::AlignHCenter">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="botaosalva">
        <property name="maximumSize">
         <size>
          <width>100</width>
